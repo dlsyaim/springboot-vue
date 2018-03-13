@@ -78,6 +78,7 @@ public class DataSourceConfig implements EnvironmentAware {
             } catch (SQLException e) {
                 log.error("druid数据库连接池初始化异常");
             }
+            log.error("druid数据库连接池初始化异常");
             return druid;
         }
     }

@@ -1,6 +1,7 @@
 package ks.monitor.controlller;
 
 import com.github.pagehelper.PageHelper;
+import ks.monitor.common.Assist;
 import ks.monitor.entity.KsManager;
 import ks.monitor.service.KsManagerService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +32,12 @@ public class KsManagerController {
      */
     @GetMapping(value = "list/{start}/{size}")
     public List<KsManager> getUserList(@PathVariable("start")int start, @PathVariable("size")int size){
-        PageHelper.startPage(start,size);
-        List<KsManager> list= ksManagerService.getList();
+        //PageHelper.startPage(start,size);
+        //List<KsManager> list= ksManagerService.getList();
+
+        Assist assist = new Assist();
+        assist.setRequires(Assist.customRequire("ManagerID in(",")",1,2));
+        List<KsManager> list = ksManagerService.selectKsManager(assist);
         return list;
     }
 }

@@ -372,7 +372,7 @@
       ,[AddTime]
     </sql>
 
-    <select id="queryList" resultMap="baseResultMap" >
-        SELECT <include refid="Base_Column"/>  FROM  user
+    <select id="queryList" resultMap="result_KsManager_Map" >
+        SELECT <include refid="Base_Column"/>  FROM  KS_Manager
     </select>
 </mapper>

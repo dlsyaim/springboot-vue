@@ -47,8 +47,8 @@ spring:
    datasource:
      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
      username: sa
-     url: jdbc:sqlserver://192.168.1.10:1433;databaseName=KS_DataBase3.0
-     password: 224505735
+     url: jdbc:sqlserver://180.168.122.90:1433;databaseName=KS_DataBase3.0
+     password: 88888888
      type:  com.alibaba.druid.pool.DruidDataSource
      druid:
        filters: config
