@@ -1,3 +1,88 @@
+#spring:
+#  profiles:
+#    active: dev
+#  datasource:
+#    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    url: jdbc:sqlserver://192.168.1.10:1433;databaseName=KS_DataBase3.0
+#    username: sa
+#    password: 13524505735
+#    platform: mssql
+#  jpa:
+#    show-sql: true
 spring:
+  application:
+    name: ksmonitor
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
   profiles:
     active: dev
+
+  jackson:
+    date-format: YYYY-MM-DD
+    joda-date-time-format: YYYY-MM-DD HH:mm:ss
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: ks.monitor.entity
+  check-config-location: true
+  config-location: classpath:mybatis.xml
+
+logging:
+  config: classpath:logback.xml
+
+server:
+  port: 8091
+  session:
+    timeout: 1800
+  connection-timeout:  60000
+  display-name: KsMonitor Application
+
+---
+spring:
+   profiles: dev
+   datasource:
+     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+     username: sa
+     url: jdbc:sqlserver://192.168.1.10:1433;databaseName=KS_DataBase3.0
+     password: 224505735
+     type:  com.alibaba.druid.pool.DruidDataSource
+     druid:
+       filters: config
+       maxActive: 50
+       initialSize: 10
+       maxWait: 60000
+       minIdle: 1
+       timeBetweenEvictionRunsMillis: 60000
+       minEvictableIdleTimeMillis: 300000
+       validationQuery: select 'x'
+       testWhileIdle: true
+       testOnBorrow: false
+       testOnReturn: false
+       connectionProperties: config.decrypt=false;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMBqy+oGF0DhV2jiHyilb4mowR4mgQL4FSE0+GvlstTqYanSnJXYHmAffYVNO7lsAq4KU0K3Xh9e6qtGdAevFq0CAwEAAQ==
+
+---
+spring:
+   profiles: test
+   datasource:
+     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+     username: sa
+     url: jdbc:sqlserver://192.168.1.10:1433;databaseName=KS_DataBase3.0
+     password: 224505735
+     type:  com.alibaba.druid.pool.DruidDataSource
+     druid:
+       filters: config
+       maxActive: 50
+       initialSize: 10
+       maxWait: 60000
+       minIdle: 1
+       timeBetweenEvictionRunsMillis: 60000
+       minEvictableIdleTimeMillis: 300000
+       validationQuery: select 'x'
+       testWhileIdle: true
+       testOnBorrow: false
+       testOnReturn: false
+       connectionProperties: config.decrypt=false;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMBqy+oGF0DhV2jiHyilb4mowR4mgQL4FSE0+GvlstTqYanSnJXYHmAffYVNO7lsAq4KU0K3Xh9e6qtGdAevFq0CAwEAAQ==
