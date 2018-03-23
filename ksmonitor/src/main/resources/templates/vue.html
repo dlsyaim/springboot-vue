@@ -18,7 +18,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <div id="app">
-    <button @click="changeType" class="btn btn-">切换图表类型</button>
+    <button @click="changeType" class="btn btn-success">切换图表类型</button>
     <ve-chart :data="chartData" :settings="chartSettings"></ve-chart>
 </div>
 <script>
@@ -45,7 +45,7 @@
                     { '日期': '1月5日', '销售额-1季度': 3123 },
                     { '日期': '1月6日', '销售额-1季度': 7123 }
                 ]
-            }速成测试是
+            }
             this.typeArr = ['line', 'histogram', 'pie']
             this.index = 0
             this.chartSettings = { type: this.typeArr[this.index] }
