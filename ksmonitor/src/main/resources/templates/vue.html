@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Document</title>
+</head>
+<body>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+<script src="//unpkg.com/v-charts/lib/index.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<div id="app">
+    <button @click="changeType" class="btn btn-">切换图表类型</button>
+    <ve-chart :data="chartData" :settings="chartSettings"></ve-chart>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            chartSettings: {}
+        },
+        methods: {
+            changeType: function () {
+                this.index++
+                if (this.index >= this.typeArr.length) { this.index = 0 }
+                this.chartSettings = { type: this.typeArr[this.index] }
+            }
+        },
+        created: function () {
+            this.chartData = {
+                columns: ['日期', '销售额-1季度'],
+                rows: [
+                    { '日期': '1月1日', '销售额-1季度': 1523 },
+                    { '日期': '1月2日', '销售额-1季度': 1223 },
+                    { '日期': '1月3日', '销售额-1季度': 2123 },
+                    { '日期': '1月4日', '销售额-1季度': 4123 },
+                    { '日期': '1月5日', '销售额-1季度': 3123 },
+                    { '日期': '1月6日', '销售额-1季度': 7123 }
+                ]
+            }速成测试是
+            this.typeArr = ['line', 'histogram', 'pie']
+            this.index = 0
+            this.chartSettings = { type: this.typeArr[this.index] }
+        }
+    })
+</script>
+</body>
+</html>
